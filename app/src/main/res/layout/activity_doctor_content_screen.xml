@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".activityScreen.DoctorContentScreen">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:minHeight="900dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="800dp">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.03" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.97" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="28dp"
+                android:text="About"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/guideline19"
+                app:layout_constraintTop_toBottomOf="@+id/app_bar" />
+
+            <TextView
+                android:id="@+id/doctorDescriptionTextView"
+                android:layout_width="0dp"
+                android:layout_height="63dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:text="TextView"
+                android:textColor="#000000"
+                app:layout_constraintEnd_toStartOf="@+id/guideline20"
+                app:layout_constraintStart_toStartOf="@+id/guideline19"
+                app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="148dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:text="Archievements"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/guideline19"
+                app:layout_constraintTop_toBottomOf="@+id/doctorDescriptionTextView" />
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="0dp"
+                android:layout_height="27dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:text="Contact Details"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/guideline19"
+                app:layout_constraintTop_toBottomOf="@+id/doctorArchievementTextview" />
+
+            <TextView
+                android:id="@+id/doctorArchievementTextview"
+                android:layout_width="0dp"
+                android:layout_height="19dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:text="The Best Doctor 2021"
+                android:textColor="#EDC13D"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/guideline19"
+                app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+            <TextView
+                android:id="@+id/doctorContactDetailTextView"
+                android:layout_width="0dp"
+                android:layout_height="19dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:text="TextView"
+                android:textColor="#000000"
+                app:layout_constraintEnd_toStartOf="@+id/guideline20"
+                app:layout_constraintStart_toStartOf="@+id/guideline19"
+                app:layout_constraintTop_toBottomOf="@+id/textView18" />
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/app_bar"
+                android:layout_width="match_parent"
+                android:layout_height="194dp"
+                android:fitsSystemWindows="true"
+                android:theme="@style/Theme.Icare_myApplication.AppBarOverlay"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:id="@+id/toolbar_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fitsSystemWindows="true"
+                    app:contentScrim="@color/white"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                    app:toolbarId="@+id/toolbar">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/guideline18"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_percent="0.60" />
+
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/guideline17"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_percent="0.97" />
+
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/guideline16"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_percent="0.03" />
+
+                        <ImageButton
+                            android:id="@+id/returnToDoctorScreenButton"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:backgroundTint="#6F00F8"
+                            app:layout_constraintStart_toStartOf="@+id/guideline16"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="?attr/actionModeCloseDrawable" />
+
+                        <TextView
+                            android:id="@+id/doctorNameTextview"
+                            android:layout_width="0dp"
+                            android:layout_height="29dp"
+                            android:layout_marginStart="24dp"
+                            android:layout_marginTop="85dp"
+                            android:text="TextView"
+                            android:textColor="#FDFDFD"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toStartOf="@+id/guideline18"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="@+id/guideline16"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/doctorTypeTextView"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="24dp"
+                            android:layout_marginTop="16dp"
+                            android:text="TextView"
+                            android:textColor="#FFFFFF"
+                            app:layout_constraintEnd_toStartOf="@+id/guideline18"
+                            app:layout_constraintStart_toStartOf="@+id/guideline16"
+                            app:layout_constraintTop_toBottomOf="@+id/doctorNameTextview" />
+
+                        <ImageView
+                            android:id="@+id/doctorImageView"
+                            android:layout_width="0dp"
+                            android:layout_height="101dp"
+                            android:layout_marginTop="40dp"
+                            app:layout_constraintEnd_toStartOf="@+id/guideline17"
+                            app:layout_constraintHorizontal_bias="0.463"
+                            app:layout_constraintStart_toStartOf="@+id/guideline18"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@mipmap/ic_lmage1" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.appbar.CollapsingToolbarLayout>
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/fab_margin"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline20"
+                app:layout_constraintTop_toBottomOf="@+id/app_bar"
+                app:srcCompat="@android:drawable/ic_dialog_email" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:minHeight="800dp"
+    android:minHeight="900dp"
     tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -32,7 +31,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="24dp"
             android:text="Category"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -117,7 +116,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.6" />
+            app:layout_constraintGuide_percent="0.63" />
 
         <ImageView
             android:id="@+id/imageView2"
@@ -143,41 +142,106 @@
             app:layout_constraintStart_toStartOf="@+id/guideline2"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-        <ImageButton
-            android:id="@+id/diagnosticImageButton"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:background="#FFFFFF"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toBottomOf="@+id/textView4"
-            app:srcCompat="@mipmap/ic_launcher10_round" />
+            app:layout_constraintTop_toBottomOf="@+id/textView4">
 
-        <ImageButton
-            android:id="@+id/imageButton37"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:background="#FFFFFF"
-            app:layout_constraintBottom_toBottomOf="@+id/diagnosticImageButton"
-            app:layout_constraintStart_toEndOf="@+id/diagnosticImageButton"
-            app:layout_constraintTop_toTopOf="@+id/diagnosticImageButton"
-            app:srcCompat="@mipmap/ic_launcher11_round" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.33" />
 
-        <ImageButton
-            android:id="@+id/imageButton38"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:background="#FFFFFF"
-            app:layout_constraintBottom_toBottomOf="@+id/diagnosticImageButton"
-            app:layout_constraintStart_toEndOf="@+id/imageButton37"
-            app:layout_constraintTop_toTopOf="@+id/diagnosticImageButton"
-            app:srcCompat="@mipmap/ic_launcher12_round" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.66" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="0dp"
+                android:layout_height="19dp"
+                android:text="Symptoms"
+                android:textAlignment="center"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline13"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="0dp"
+                android:layout_height="19dp"
+                android:layout_marginTop="8dp"
+                android:text="Doctors"
+                android:textAlignment="center"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline21"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/guideline13"
+                app:layout_constraintTop_toBottomOf="@+id/doctorImageButton" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="0dp"
+                android:layout_height="19dp"
+                android:layout_marginTop="8dp"
+                android:text="Record Health"
+                android:textAlignment="center"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline21"
+                app:layout_constraintTop_toBottomOf="@+id/recordHealthImageButton" />
+
+            <ImageButton
+                android:id="@+id/diagnosticImageButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="#FFFFFF"
+                app:layout_constraintBottom_toTopOf="@+id/textView9"
+                app:layout_constraintEnd_toStartOf="@+id/guideline13"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@mipmap/ic_homeimage1" />
+
+            <ImageButton
+                android:id="@+id/doctorImageButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="#FFFFFF"
+                app:layout_constraintEnd_toStartOf="@+id/guideline21"
+                app:layout_constraintStart_toStartOf="@+id/guideline13"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@mipmap/ic_homeimage2" />
+
+            <ImageButton
+                android:id="@+id/recordHealthImageButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="#FFFFFF"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline21"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@mipmap/ic_homeimage3" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 
 </ScrollView>

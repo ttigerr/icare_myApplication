@@ -9,7 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Icare_myApplication">
-        <activity android:name=".activityScreen.DiagnosticScreen"></activity>
+        <activity android:name=".activityScreen.RecordHealthScreen"></activity>
+        <activity
+            android:name=".activityScreen.DoctorContentScreen"
+            android:label="@string/title_activity_doctor_content_screen"
+            android:theme="@style/Theme.Icare_myApplication.NoActionBar" />
+        <activity android:name=".activityScreen.DoctorScreen" />
+        <activity android:name=".activityScreen.DiagnosticScreen" />
         <activity android:name=".activityScreen.RegisterScreen" />
         <activity android:name=".activityScreen.LoginScreen" />
         <activity android:name=".activityScreen.HomeScreen" />

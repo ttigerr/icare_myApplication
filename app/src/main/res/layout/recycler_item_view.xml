@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+
+        android:layout_marginBottom="8dp"
+
+        app:cardBackgroundColor="@color/cardview_light_background"
+        app:cardCornerRadius="8dp"
+
+
+        app:cardElevation="4dp"
+        app:cardPreventCornerOverlap="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/itemImageView"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline11"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.428"
+                app:srcCompat="@mipmap/ic_launcher3" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.03" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.97" />
+
+            <TextView
+                android:id="@+id/itemNameTextView"
+                android:layout_width="0dp"
+                android:layout_height="19dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:text="TextView"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/itemImageView"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/additionalTextView"
+                android:layout_width="0dp"
+                android:layout_height="19dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/itemImageView"
+                app:layout_constraintTop_toBottomOf="@+id/itemNameTextView" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

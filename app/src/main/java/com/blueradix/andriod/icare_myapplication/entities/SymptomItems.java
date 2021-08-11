@@ -4,42 +4,83 @@ import java.io.Serializable;
 
 public class SymptomItems implements Serializable
 {
-    private long symptomId;
-    private String symptomName;
-    private int imageResource;
+    public static final String SYMPTOM_KEY = "symptom_key";
+    public long symptomId;
+    public String symptomName;
+    public String symptomDescription;
+    public String symptomRisk;
+    public String symptomCauses;
+    public String symptomSolution;
+    public String symptomImageResource;
 
     // Constructor
-    public SymptomItems(int symptomId, String symptomName, int imageResource) {
+    public SymptomItems(long symptomId, String symptomName, String symptomDescription, String symptomRisk, String symptomCauses, String symptomSolution, String symptomImageResource) {
         this.symptomId = symptomId;
         this.symptomName = symptomName;
-        this.imageResource = imageResource;
+        this.symptomDescription = symptomDescription;
+        this.symptomRisk = symptomRisk;
+        this.symptomCauses = symptomCauses;
+        this.symptomSolution = symptomSolution;
+        this.symptomImageResource = symptomImageResource;
     }
 
     // Default constructor
     public SymptomItems() {
     }
 
-    // Getter
     public long getSymptomId() {
         return symptomId;
+    }
+
+    public void setSymptomId(long symptomId) {
+        this.symptomId = symptomId;
     }
 
     public String getSymptomName() {
         return symptomName;
     }
 
-    public int getImageResource(){ return imageResource; }
-
-    // Setter
-    public void setSymptomId(long symptomId) {
-        this.symptomId = symptomId;
-    }
-
     public void setSymptomName(String symptomName) {
         this.symptomName = symptomName;
     }
 
-    public void setImageResource(int imageResource) {
-        this.imageResource = imageResource;
+    public String getSymptomDescription() {
+        return symptomDescription;
+    }
+
+    public void setSymptomDescription(String symptomDescription) {
+        this.symptomDescription = symptomDescription;
+    }
+
+    public String getSymptomRisk() {
+        return symptomRisk;
+    }
+
+    public void setSymptomRisk(String symptomRisk) {
+        this.symptomRisk = symptomRisk;
+    }
+
+    public String getSymptomCauses() {
+        return symptomCauses;
+    }
+
+    public void setSymptomCauses(String symptomCauses) {
+        this.symptomCauses = symptomCauses;
+    }
+
+    public String getSymptomSolution() {
+        return symptomSolution;
+    }
+
+    public void setSymptomSolution(String symptomSolution) {
+        this.symptomSolution = symptomSolution;
+    }
+
+    public String getSymptomImageResource() {
+        return symptomImageResource;
+    }
+
+    public void setSymptomImageResource(String symptomImageResource) {
+        this.symptomImageResource = symptomImageResource;
     }
 }

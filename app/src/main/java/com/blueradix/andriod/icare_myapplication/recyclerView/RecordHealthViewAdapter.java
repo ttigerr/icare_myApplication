@@ -1,5 +1,7 @@
 package com.blueradix.andriod.icare_myapplication.recyclerView;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,15 +10,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.blueradix.andriod.icare_myapplication.R;
+import com.blueradix.andriod.icare_myapplication.activityScreen.RecordContentScreen;
 import com.blueradix.andriod.icare_myapplication.entities.UserHealthRecord;
 
-import java.util.ArrayList;
+import java.util.List;
 
 
 public class RecordHealthViewAdapter extends RecyclerView.Adapter<RecordHealthViewHolder>
 {
 
-    private ArrayList<UserHealthRecord> recordList;
+    private List<UserHealthRecord> recordList;
+    private Context context;
+
     @NonNull
     @Override
     public RecordHealthViewHolder onCreateViewHolder(@NonNull  ViewGroup parent, int viewType)
@@ -26,9 +31,10 @@ public class RecordHealthViewAdapter extends RecyclerView.Adapter<RecordHealthVi
         return recordViewHolder;
     }
 
-    public RecordHealthViewAdapter(ArrayList<UserHealthRecord> recordList)
+    public RecordHealthViewAdapter(Context context, List<UserHealthRecord> recordList)
     {
         this.recordList = recordList;
+        this.context = context;
     }
     @Override
     public void onBindViewHolder(@NonNull RecordHealthViewHolder holder, int position)
@@ -37,6 +43,23 @@ public class RecordHealthViewAdapter extends RecyclerView.Adapter<RecordHealthVi
         holder.recordTitle.setText(userRecordList.getRecordTitle());
         holder.recordDate.setText(userRecordList.getRecordDate());
         holder.recordHealthImage.setImageResource(userRecordList.getRecordImageResource());
+
+        // Go inside the symptom content
+        holder.cardView.setOnClickListener(new View.OnClickListener()
+        {
+            // Hardcode to store doctor's data
+            @Override
+            public void onClick(View v)
+            {
+                Intent goToRecordHealthContentIntent = new Intent(context, RecordContentScreen.class);
+                goToRecordHealthContentIntent.putExtra("Record Name",recordList.get(position).getRecordTitle());
+                goToRecordHealthContentIntent.putExtra("Record Description",recordList.get(position).getRecordDescription());
+                goToRecordHealthContentIntent.putExtra("Record SideEffect",recordList.get(position).getRecordSideEffect());
+                goToRecordHealthContentIntent.putExtra("Record Date",recordList.get(position).getRecordDate());
+
+                context.startActivity(goToRecordHealthContentIntent);
+            }
+        });
 
     }
 

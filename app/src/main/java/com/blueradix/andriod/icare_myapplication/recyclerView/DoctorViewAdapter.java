@@ -20,6 +20,7 @@ public class DoctorViewAdapter extends RecyclerView.Adapter<DoctorViewHolder>
 {
     private Context context;
     private List<DoctorLists> doctorLists;
+    public List<DoctorLists> getDoctor(){ return doctorLists; }
 
     @NonNull
     @Override
@@ -39,10 +40,9 @@ public class DoctorViewAdapter extends RecyclerView.Adapter<DoctorViewHolder>
     @Override
     public void onBindViewHolder(@NonNull DoctorViewHolder holder, int position)
     {
-        DoctorLists doctor = doctorLists.get(position);
-        holder.doctorImageView.setImageResource(doctor.getDoctorImageResource());
-        holder.doctorTextview.setText(doctor.getDoctorName());
-        holder.doctorType.setText(doctor.getDoctorType());
+        //DoctorLists doctor = doctorLists.get(position);
+        DoctorLists doctorItem = doctorLists.get(position);
+        holder.updateDoctorData(doctorItem);
 
         // Set the action on the cardviews when users clicked on it
         holder.cardView.setOnClickListener(new View.OnClickListener()

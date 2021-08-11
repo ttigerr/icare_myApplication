@@ -6,19 +6,19 @@ public class UserHealthRecord
     private String recordTitle;
     private String recordDate;
     private String recordDescription;
-    private String recordRisk;
+    private String recordSideEffect;
     private int recordImageResource;
 
     // constructor
 
 
-    public UserHealthRecord(long id, String recordTitle, String recordDate, String recordDescription, String recordRisk, int recordImageResource)
+    public UserHealthRecord(long id, String recordTitle, String recordDate, String recordDescription, String recordSideEffect, int recordImageResource)
     {
         this.id = id;
         this.recordTitle = recordTitle;
         this.recordDate = recordDate;
         this.recordDescription = recordDescription;
-        this.recordRisk = recordRisk;
+        this.recordSideEffect = recordSideEffect;
         this.recordImageResource = recordImageResource;
     }
 
@@ -60,12 +60,12 @@ public class UserHealthRecord
         this.recordDescription = recordDescription;
     }
 
-    public String getRecordRisk() {
-        return recordRisk;
+    public String getRecordSideEffect() {
+        return recordSideEffect;
     }
 
-    public void setRecordRisk(String recordRisk) {
-        this.recordRisk = recordRisk;
+    public void setRecordSideEffect(String recordSideEffect) {
+        this.recordSideEffect = recordSideEffect;
     }
 
     public int getRecordImageResource() {
@@ -83,7 +83,7 @@ public class UserHealthRecord
                 ", recordTitle='" + recordTitle + '\'' +
                 ", recordDate='" + recordDate + '\'' +
                 ", recordDescription='" + recordDescription + '\'' +
-                ", recordRisk='" + recordRisk + '\'' +
+                ", recordRisk='" + recordSideEffect + '\'' +
                 ", recordImageResource=" + recordImageResource +
                 '}';
     }

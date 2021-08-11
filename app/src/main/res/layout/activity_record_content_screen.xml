@@ -15,7 +15,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="800dp">
+            android:minHeight="1000dp">
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline19"
@@ -36,7 +36,7 @@
                 android:layout_width="0dp"
                 android:layout_height="27dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="28dp"
                 android:text="About"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -44,10 +44,34 @@
                 app:layout_constraintTop_toBottomOf="@+id/app_bar" />
 
             <TextView
-                android:id="@+id/doctorDescriptionTextView"
+                android:id="@+id/textView16"
+                android:layout_width="148dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Side Effects"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/guideline19"
+                app:layout_constraintTop_toBottomOf="@+id/recordDescriptionTextView" />
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="0dp"
+                android:layout_height="27dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/guideline19"
+                app:layout_constraintTop_toBottomOf="@+id/recordSideEffectTextview" />
+
+            <TextView
+                android:id="@+id/recordDescriptionTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:text="TextView"
                 android:textColor="#000000"
@@ -56,49 +80,26 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
             <TextView
-                android:id="@+id/textView16"
-                android:layout_width="148dp"
-                android:layout_height="0dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="Archievements"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/guideline19"
-                app:layout_constraintTop_toBottomOf="@+id/doctorDescriptionTextView" />
-
-            <TextView
-                android:id="@+id/textView18"
-                android:layout_width="0dp"
-                android:layout_height="27dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="Contact Details"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/guideline19"
-                app:layout_constraintTop_toBottomOf="@+id/doctorArchievementTextview" />
-
-            <TextView
-                android:id="@+id/doctorArchievementTextview"
+                android:id="@+id/recordSideEffectTextview"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
                 android:text="The Best Doctor 2021"
-                android:textColor="#EDC13D"
+                android:textColor="#232119"
                 android:textSize="14sp"
-                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/guideline20"
                 app:layout_constraintStart_toStartOf="@+id/guideline19"
                 app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
             <TextView
-                android:id="@+id/doctorContactDetailTextView"
+                android:id="@+id/symptomCausesTextView"
                 android:layout_width="0dp"
-                android:layout_height="19dp"
+                android:layout_height="76dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginEnd="16dp"
-                android:text="TextView"
                 android:textColor="#000000"
                 app:layout_constraintEnd_toStartOf="@+id/guideline20"
                 app:layout_constraintStart_toStartOf="@+id/guideline19"
@@ -123,16 +124,16 @@
                     app:layout_scrollFlags="scroll|exitUntilCollapsed"
                     app:toolbarId="@+id/toolbar">
 
+                    <androidx.appcompat.widget.Toolbar
+                        android:id="@+id/toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize"
+                        app:layout_collapseMode="pin"
+                        app:popupTheme="@style/AppTheme.PopupOverlay" />
+
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
-
-                        <androidx.constraintlayout.widget.Guideline
-                            android:id="@+id/guideline18"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            app:layout_constraintGuide_percent="0.60" />
 
                         <androidx.constraintlayout.widget.Guideline
                             android:id="@+id/guideline17"
@@ -159,7 +160,7 @@
                             app:srcCompat="?attr/actionModeCloseDrawable" />
 
                         <TextView
-                            android:id="@+id/doctorNameTextview"
+                            android:id="@+id/recordTitleTextview"
                             android:layout_width="0dp"
                             android:layout_height="29dp"
                             android:layout_marginStart="24dp"
@@ -168,35 +169,22 @@
                             android:textColor="#FDFDFD"
                             android:textSize="20sp"
                             android:textStyle="bold"
-                            app:layout_constraintEnd_toStartOf="@+id/guideline18"
-                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintEnd_toStartOf="@+id/guideline17"
                             app:layout_constraintStart_toStartOf="@+id/guideline16"
                             app:layout_constraintTop_toBottomOf="@+id/returnToDoctorScreenButton" />
 
                         <TextView
-                            android:id="@+id/doctorTypeTextView"
+                            android:id="@+id/recordDateTextView"
                             android:layout_width="0dp"
                             android:layout_height="19dp"
                             android:layout_marginStart="24dp"
                             android:layout_marginTop="16dp"
-                            android:text="TextView"
                             android:textColor="#FFFFFF"
-                            app:layout_constraintEnd_toStartOf="@+id/guideline18"
-                            app:layout_constraintStart_toStartOf="@+id/guideline16"
-                            app:layout_constraintTop_toBottomOf="@+id/doctorNameTextview" />
-
-                        <ImageView
-                            android:id="@+id/doctorImageView"
-                            android:layout_width="0dp"
-                            android:layout_height="100dp"
-                            android:layout_marginStart="32dp"
-                            android:layout_marginTop="40dp"
-                            android:layout_marginEnd="32dp"
                             app:layout_constraintEnd_toStartOf="@+id/guideline17"
-                            app:layout_constraintHorizontal_bias="0.463"
-                            app:layout_constraintStart_toStartOf="@+id/guideline18"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@android:drawable/btn_star" />
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="@+id/guideline16"
+                            app:layout_constraintTop_toBottomOf="@+id/recordTitleTextview" />
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </com.google.android.material.appbar.CollapsingToolbarLayout>
             </com.google.android.material.appbar.AppBarLayout>

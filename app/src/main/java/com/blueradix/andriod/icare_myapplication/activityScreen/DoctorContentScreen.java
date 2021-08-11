@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.blueradix.andriod.icare_myapplication.R;
+import com.blueradix.andriod.icare_myapplication.entities.DoctorLists;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -22,6 +23,7 @@ public class DoctorContentScreen extends AppCompatActivity {
     ActivityDoctorContentScreenBinding binding;
     private TextView doctorName, doctorType, doctorDescription, achievement, contactDetail;
     private ImageView doctorImage;
+    DoctorLists doctor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -44,7 +46,7 @@ public class DoctorContentScreen extends AppCompatActivity {
         String doctorDescription = doctorIntent.getExtras().getString("Description");
         String doctorAchievement = doctorIntent.getExtras().getString("Achievements");
         String doctorContactNumber = doctorIntent.getExtras().getString("Contact Detail");
-        //int doctorImage = doctorIntent.getExtras().getInt("Image");
+        int doctorImage = doctorIntent.getExtras().getInt("Image");
 
         // Set values
         this.doctorName.setText(doctorName);
@@ -52,14 +54,15 @@ public class DoctorContentScreen extends AppCompatActivity {
         this.doctorDescription.setText(doctorDescription);
         this.achievement.setText(doctorAchievement);
         this.contactDetail.setText(doctorContactNumber);
-        //this.doctorImage.setImageResource(doctorImage);
-
+        View rootView = binding.doctorImageView.getRootView();
+        int resID = rootView.getResources().getIdentifier(doctor.doctorImageResource , "mipmap" , rootView.getContext().getPackageName());
+        binding.doctorImageView.setImageResource(resID);
+        this.doctorImage.setImageResource(doctorImage);
 
         /*Toolbar toolbar = binding.toolbar;
         setSupportActionBar(toolbar);
         CollapsingToolbarLayout toolBarLayout = binding.toolbarLayout;
         toolBarLayout.setTitle(getTitle());*/
-
 
     }
 }

@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.blueradix.andriod.icare_myapplication.R;
+import com.google.android.material.card.MaterialCardView;
 
 
 public class RecordHealthViewHolder extends RecyclerView.ViewHolder
@@ -15,6 +16,7 @@ public class RecordHealthViewHolder extends RecyclerView.ViewHolder
     public final ImageView recordHealthImage;
     public final TextView recordTitle;
     public final TextView recordDate;
+    public final MaterialCardView cardView;
 
     public RecordHealthViewHolder(@NonNull View itemView)
     {
@@ -22,6 +24,8 @@ public class RecordHealthViewHolder extends RecyclerView.ViewHolder
         recordHealthImage = itemView.findViewById(R.id.itemImageView);
         recordTitle = itemView.findViewById(R.id.itemNameTextView);
         recordDate = itemView.findViewById(R.id.additionalTextView);
+        cardView = itemView.findViewById(R.id.materialCardview);
+
     }
 
 }

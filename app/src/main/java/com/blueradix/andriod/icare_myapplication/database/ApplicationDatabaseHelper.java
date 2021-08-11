@@ -8,6 +8,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.blueradix.andriod.icare_myapplication.entities.DoctorLists;
+import com.blueradix.andriod.icare_myapplication.entities.SymptomItems;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class ApplicationDatabaseHelper extends SQLiteOpenHelper
 {
     private static final String TAG = ApplicationDatabaseHelper.class.getName();
@@ -18,21 +24,6 @@ public class ApplicationDatabaseHelper extends SQLiteOpenHelper
     //create database constants
     private static final String DATABASE_NAME = "icareApplication.db";
     private static final Integer DATABASE_VERSION = 1;
-
-    // Create database for users
-    private static final String TABLE_USERS = "USERS";
-    private static final String COL_ID = "ID";
-    private static final String COL_USER_NAME = "USERNAME";
-    private static final String COL_EMAIL = "EMAIL";
-    private static final String COL_PASSWORD = "PASSWORD";
-
-    private static final String CREATE_TABLE_USER = "CREATE TABLE " + TABLE_USERS + "(" + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            COL_USER_NAME + " TEXT, " +
-            COL_EMAIL + " TEXT, " +
-            COL_PASSWORD + " TEXT )";
-
-    private static final String DROP_TABLE_USER = " DROP TABLE IF EXISTS " + TABLE_USERS;
-    private static final String GET_ALL_USER = "SELECT * FROM " + TABLE_USERS;
 
     public static synchronized ApplicationDatabaseHelper getInstance(Context ctx)
     {
@@ -52,16 +43,35 @@ public class ApplicationDatabaseHelper extends SQLiteOpenHelper
     public void onCreate(SQLiteDatabase db)
     {
         db.execSQL(CREATE_TABLE_USER);
+        db.execSQL(CREATE_TABLE_SYMPTOM);
+        db.execSQL(CREATE_TABLE_DOCTOR);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1)
     {
         db.execSQL(DROP_TABLE_USER);
+        db.execSQL(DROP_TABLE_SYMPTOM);
+        db.execSQL(DROP_TABLE_DOCTOR);
         onCreate(db);
     }
 
-    // Table for USERS
+    // Table for USER LOGIN
+    // Create database for users
+    private static final String TABLE_USERS = "USERS";
+    private static final String COL_ID = "ID";
+    private static final String COL_USER_NAME = "USERNAME";
+    private static final String COL_EMAIL = "EMAIL";
+    private static final String COL_PASSWORD = "PASSWORD";
+
+    private static final String CREATE_TABLE_USER = "CREATE TABLE " + TABLE_USERS + "(" + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            COL_USER_NAME + " TEXT, " +
+            COL_EMAIL + " TEXT, " +
+            COL_PASSWORD + " TEXT )";
+
+    private static final String DROP_TABLE_USER = " DROP TABLE IF EXISTS " + TABLE_USERS;
+    private static final String GET_ALL_USER = "SELECT * FROM " + TABLE_USERS;
+
     // Insert new users and store into database
     public Boolean insertNewUser(String userName, String userEmail, String userPassword)
     {
@@ -99,5 +109,133 @@ public class ApplicationDatabaseHelper extends SQLiteOpenHelper
     }
 
     // TABLE FOR SYMPTOMS
+    // insert a new table on schema
+    private static final String TABLE_SYMPTOM = "SYMPTOMS";
+    private static final String COL_SYMPTOM_ID = "ID";
+    private static final String COL_SYMPTOM_NAME = "NAME";
+    private static final String COL_SYMPTOM_DESCRIPTION = "DESCRIPTION";
+    private static final String COL_SYMPTOM_RISK = "RISK";
+    private static final String COL_SYMPTOM_CAUSE = "CAUSE";
+    private static final String COL_SYMPTOM_SOLUTION = "SOLUTION";
+    private static final String COL_SYMPTOM_IMAGE = "IMAGE";
+
+    private static final String CREATE_TABLE_SYMPTOM = "CREATE TABLE " + TABLE_SYMPTOM + "(" + COL_SYMPTOM_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            COL_SYMPTOM_NAME + " TEXT, " +
+            COL_SYMPTOM_DESCRIPTION + " TEXT, " +
+            COL_SYMPTOM_RISK + " TEXT, " +
+            COL_SYMPTOM_CAUSE + " TEXT, " +
+            COL_SYMPTOM_SOLUTION + " TEXT, " +
+            COL_SYMPTOM_IMAGE + " TEXT )";
+
+    private static final String DROP_TABLE_SYMPTOM = " DROP TABLE IF EXISTS " + TABLE_SYMPTOM;
+    private static final String GET_ALL_SYMPTOM = "SELECT * FROM " + TABLE_SYMPTOM;
+
+    // Insert new symptom on database table
+   /* public Boolean insertSymptom(String symptomName, String symptomDescription, String symptomRisk, String symptomCause, String symptomSolution, String symptomImage)
+    {
+        SQLiteDatabase database = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_SYMPTOM_NAME, symptomName);
+        contentValues.put(COL_SYMPTOM_DESCRIPTION, symptomDescription);
+        contentValues.put(COL_SYMPTOM_RISK, symptomRisk);
+        contentValues.put(COL_SYMPTOM_CAUSE, symptomCause);
+        contentValues.put(COL_SYMPTOM_SOLUTION, symptomSolution);
+        contentValues.put(COL_SYMPTOM_IMAGE, symptomImage);
+
+        long Result = database.insert(TABLE_SYMPTOM, null, contentValues);
+        // If the result is fail
+        if(Result == -1)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }*/
+
+    // Only use the cursor to paste the data in it
+    public List<SymptomItems> getSymptom() {
+        List<SymptomItems> symptom = new ArrayList<>();
+        Cursor cursor = getAllSymptom();
+
+        if(cursor.getCount() > 0) {
+            SymptomItems symptoms;
+            while (cursor.moveToNext()) {
+                Long id = cursor.getLong(0);
+                String name = cursor.getString(1);
+                String description = cursor.getString(2);
+                String risk = cursor.getString(3);
+                String cause = cursor.getString(4);
+                String solution = cursor.getString(5);
+                String image = cursor.getString(6);
+
+                symptoms = new SymptomItems(id, name, description, risk, cause, solution, image);
+                symptom.add(symptoms);
+            }
+        }
+        cursor.close();
+        return symptom;
+    }
+
+    private Cursor getAllSymptom()
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery(GET_ALL_SYMPTOM, null);
+    }
+
+    // TABLE FOR DOCTOR
+    // Insert a new table on schema
+    private static final String TABLE_DOCTOR = "DOCTORS";
+    private static final String COL_DOCTOR_ID = "ID";
+    private static final String COL_DOCTOR_NAME = "NAME";
+    private static final String COL_DOCTOR_TYPE = "TYPE";
+    private static final String COL_DOCTOR_DESCRIPTION = "DESCRIPTION";
+    private static final String COL_DOCTOR_ACHIEVEMENT = "ACHIEVEMENT";
+    private static final String COL_DOCTOR_CONTACT = "CONTACT";
+    private static final String COL_DOCTOR_IMAGE = "IMAGE";
+
+    private static final String CREATE_TABLE_DOCTOR = "CREATE TABLE " + TABLE_DOCTOR + "(" + COL_DOCTOR_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            COL_DOCTOR_NAME + " TEXT, " +
+            COL_DOCTOR_TYPE + " TEXT, " +
+            COL_DOCTOR_DESCRIPTION + " TEXT, " +
+            COL_DOCTOR_ACHIEVEMENT + " TEXT, " +
+            COL_DOCTOR_CONTACT + " TEXT, " +
+            COL_DOCTOR_IMAGE + " TEXT )";
+
+    private static final String DROP_TABLE_DOCTOR = " DROP TABLE IF EXISTS " + TABLE_DOCTOR;
+    private static final String GET_ALL_DOCTOR = "SELECT * FROM " + TABLE_DOCTOR;
+
+    // Only use the cursor to paste the data in it
+    public List<DoctorLists> getDoctor()
+    {
+        List<DoctorLists> doctor = new ArrayList<>();
+        Cursor cursor = getAllDoctor();
+
+        if(cursor.getCount() > 0) {
+            DoctorLists doctors;
+            while (cursor.moveToNext()) {
+                Long id = cursor.getLong(0);
+                String name = cursor.getString(1);
+                String type = cursor.getString(2);
+                String description = cursor.getString(3);
+                String achievement = cursor.getString(4);
+                String contact = cursor.getString(5);
+                String image = cursor.getString(6);
+
+                doctors = new DoctorLists(id, name, type, description, achievement, contact, image);
+                doctor.add(doctors);
+            }
+        }
+        cursor.close();
+        return doctor;
+    }
+
+    private Cursor getAllDoctor()
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery(GET_ALL_DOCTOR, null);
+    }
+
 
 }

@@ -15,7 +15,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="800dp">
+            android:minHeight="1000dp">
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline19"
@@ -36,24 +36,34 @@
                 android:layout_width="0dp"
                 android:layout_height="27dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:text="About"
+                android:layout_marginTop="16dp"
+                android:text="Title"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/guideline19"
                 app:layout_constraintTop_toBottomOf="@+id/app_bar" />
 
-            <TextView
-                android:id="@+id/doctorDescriptionTextView"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textsInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="61dp"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:text="TextView"
-                android:textColor="#000000"
+                android:hint="Enter your symptom title"
                 app:layout_constraintEnd_toStartOf="@+id/guideline20"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline19"
-                app:layout_constraintTop_toBottomOf="@+id/textView14" />
+                app:layout_constraintTop_toBottomOf="@+id/textView14">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/RecordTitleEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:inputType="textPersonName" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:id="@+id/textView16"
@@ -61,11 +71,32 @@
                 android:layout_height="0dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:text="Archievements"
+                android:text="Date "
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/guideline19"
-                app:layout_constraintTop_toBottomOf="@+id/doctorDescriptionTextView" />
+                app:layout_constraintTop_toBottomOf="@+id/textsInputLayout" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayouts"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="61dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:hint="Enter a record date"
+                app:layout_constraintEnd_toStartOf="@+id/guideline20"
+                app:layout_constraintStart_toStartOf="@+id/guideline19"
+                app:layout_constraintTop_toBottomOf="@+id/textView16">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/RecordDateEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:inputType="date|textPersonName" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:id="@+id/textView18"
@@ -73,36 +104,65 @@
                 android:layout_height="27dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:text="Contact Details"
+                android:text="Description"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/guideline19"
-                app:layout_constraintTop_toBottomOf="@+id/doctorArchievementTextview" />
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayouts" />
 
-            <TextView
-                android:id="@+id/doctorArchievementTextview"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="The Best Doctor 2021"
-                android:textColor="#EDC13D"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/guideline19"
-                app:layout_constraintTop_toBottomOf="@+id/textView16" />
-
-            <TextView
-                android:id="@+id/doctorContactDetailTextView"
-                android:layout_width="0dp"
-                android:layout_height="19dp"
+                android:layout_height="61dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:text="TextView"
-                android:textColor="#000000"
+                android:hint="Enter a symptom detail"
                 app:layout_constraintEnd_toStartOf="@+id/guideline20"
                 app:layout_constraintStart_toStartOf="@+id/guideline19"
-                app:layout_constraintTop_toBottomOf="@+id/textView18" />
+                app:layout_constraintTop_toBottomOf="@+id/textView18">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/RecordDescriptionEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:inputType="textLongMessage|text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="0dp"
+                android:layout_height="27dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Side Effect"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/guideline19"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayoutss"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="61dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:hint="Enter a symptom side effect"
+                app:layout_constraintEnd_toStartOf="@+id/guideline20"
+                app:layout_constraintStart_toStartOf="@+id/guideline19"
+                app:layout_constraintTop_toBottomOf="@+id/textView20">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/RecordSideEffectEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:inputType="textLongMessage|text" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.appbar.AppBarLayout
                 android:id="@+id/app_bar"
@@ -128,13 +188,6 @@
                         android:layout_height="match_parent">
 
                         <androidx.constraintlayout.widget.Guideline
-                            android:id="@+id/guideline18"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            app:layout_constraintGuide_percent="0.60" />
-
-                        <androidx.constraintlayout.widget.Guideline
                             android:id="@+id/guideline17"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -149,57 +202,59 @@
                             app:layout_constraintGuide_percent="0.03" />
 
                         <ImageButton
-                            android:id="@+id/returnToDoctorScreenButton"
+                            android:id="@+id/returnToRecordScreenButton"
                             android:layout_width="0dp"
                             android:layout_height="43dp"
-                            android:layout_marginStart="8dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
                             android:backgroundTint="@color/colorPrimary"
                             app:layout_constraintStart_toStartOf="@+id/guideline16"
                             app:layout_constraintTop_toTopOf="parent"
                             app:srcCompat="?attr/actionModeCloseDrawable" />
 
                         <TextView
-                            android:id="@+id/doctorNameTextview"
+                            android:id="@+id/recordTitleTextview"
                             android:layout_width="0dp"
                             android:layout_height="29dp"
                             android:layout_marginStart="24dp"
-                            android:layout_marginTop="16dp"
-                            android:text="TextView"
+                            android:layout_marginTop="85dp"
+                            android:text="Record your symptom"
                             android:textColor="#FDFDFD"
                             android:textSize="20sp"
                             android:textStyle="bold"
-                            app:layout_constraintEnd_toStartOf="@+id/guideline18"
-                            app:layout_constraintHorizontal_bias="0.0"
-                            app:layout_constraintStart_toStartOf="@+id/guideline16"
-                            app:layout_constraintTop_toBottomOf="@+id/returnToDoctorScreenButton" />
-
-                        <TextView
-                            android:id="@+id/doctorTypeTextView"
-                            android:layout_width="0dp"
-                            android:layout_height="19dp"
-                            android:layout_marginStart="24dp"
-                            android:layout_marginTop="16dp"
-                            android:text="TextView"
-                            android:textColor="#FFFFFF"
-                            app:layout_constraintEnd_toStartOf="@+id/guideline18"
-                            app:layout_constraintStart_toStartOf="@+id/guideline16"
-                            app:layout_constraintTop_toBottomOf="@+id/doctorNameTextview" />
-
-                        <ImageView
-                            android:id="@+id/doctorImageView"
-                            android:layout_width="0dp"
-                            android:layout_height="100dp"
-                            android:layout_marginStart="32dp"
-                            android:layout_marginTop="40dp"
-                            android:layout_marginEnd="32dp"
                             app:layout_constraintEnd_toStartOf="@+id/guideline17"
-                            app:layout_constraintHorizontal_bias="0.463"
-                            app:layout_constraintStart_toStartOf="@+id/guideline18"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@android:drawable/btn_star" />
+                            app:layout_constraintStart_toStartOf="@+id/guideline16"
+                            app:layout_constraintTop_toTopOf="parent" />
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </com.google.android.material.appbar.CollapsingToolbarLayout>
             </com.google.android.material.appbar.AppBarLayout>
+
+            <Button
+                android:id="@+id/addRecordButton"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="@color/colorAccent"
+                android:text="ADD"
+                app:layout_constraintEnd_toStartOf="@+id/cancelRecordButton"
+                app:layout_constraintStart_toStartOf="@+id/guideline19"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutss" />
+
+            <Button
+                android:id="@+id/cancelRecordButton"
+                android:layout_width="0dp"
+                android:layout_height="58dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="@color/colorAccent"
+                android:text="CANCEL"
+                app:layout_constraintEnd_toStartOf="@+id/guideline20"
+                app:layout_constraintStart_toEndOf="@+id/addRecordButton"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutss" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

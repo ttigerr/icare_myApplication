@@ -2,16 +2,16 @@ package com.blueradix.andriod.icare_myapplication.entities;
 
 public class DoctorLists
 {
-    private long doctorId;
-    private String doctorName;
-    private String doctorType;
-    private String description;
-    private String achievement;
-    private String contactNumber;
-    private int doctorImageResource;
+    public long doctorId;
+    public String doctorName;
+    public String doctorType;
+    public String description;
+    public String achievement;
+    public String contactNumber;
+    public String doctorImageResource;
 
     // Constructor
-    public DoctorLists(long doctorId, String doctorName, String doctorType, String description, String achievement, String contactNumber, int doctorImageResource)
+    public DoctorLists(long doctorId, String doctorName, String doctorType, String description, String achievement, String contactNumber, String doctorImageResource)
     {
         this.doctorId = doctorId;
         this.doctorName = doctorName;
@@ -74,11 +74,11 @@ public class DoctorLists
         this.contactNumber = contactNumber;
     }
 
-    public int getDoctorImageResource() {
+    public String getDoctorImageResource() {
         return doctorImageResource;
     }
 
-    public void setDoctorImageResource(int doctorImageResource) {
+    public void setDoctorImageResource(String doctorImageResource) {
         this.doctorImageResource = doctorImageResource;
     }
 

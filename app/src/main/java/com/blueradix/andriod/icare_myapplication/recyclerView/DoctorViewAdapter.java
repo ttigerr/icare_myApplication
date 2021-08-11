@@ -21,20 +21,22 @@ public class DoctorViewAdapter extends RecyclerView.Adapter<DoctorViewHolder>
     private Context context;
     private List<DoctorLists> doctorLists;
     public List<DoctorLists> getDoctor(){ return doctorLists; }
+    private OnDoctorListener onDoctorListener;
 
     @NonNull
     @Override
     public DoctorViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
         View doctorView = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_cardview_item_view, parent, false);
-        DoctorViewHolder doctorViewHolder = new DoctorViewHolder(doctorView);
+        DoctorViewHolder doctorViewHolder = new DoctorViewHolder(doctorView, onDoctorListener);
         return doctorViewHolder;
     }
 
-    public DoctorViewAdapter (Context context , List<DoctorLists> doctorLists)
+    public DoctorViewAdapter (Context context , List<DoctorLists> doctorLists, OnDoctorListener onDoctorListener)
     {
         this.context = context;
         this.doctorLists = doctorLists;
+        this.onDoctorListener = onDoctorListener;
     }
 
     @Override
@@ -43,9 +45,10 @@ public class DoctorViewAdapter extends RecyclerView.Adapter<DoctorViewHolder>
         //DoctorLists doctor = doctorLists.get(position);
         DoctorLists doctorItem = doctorLists.get(position);
         holder.updateDoctorData(doctorItem);
+        holder.bind(doctorItem, onDoctorListener);
 
         // Set the action on the cardviews when users clicked on it
-        holder.cardView.setOnClickListener(new View.OnClickListener()
+        /*holder.cardView.setOnClickListener(new View.OnClickListener()
         {
             // Hardcode to store doctor's data
             @Override
@@ -60,12 +63,18 @@ public class DoctorViewAdapter extends RecyclerView.Adapter<DoctorViewHolder>
                 goToDoctorDetailIntent.putExtra("Image",doctorLists.get(position).getDoctorImageResource());
                 context.startActivity(goToDoctorDetailIntent);
             }
-        });
+        });*/
     }
 
     @Override
     public int getItemCount()
     {
         return doctorLists.size();
+    }
+
+    public void addDoctorItem( int position, DoctorLists doctor)
+    {
+        doctorLists.set(position, doctor);
+        notifyItemChanged(position);
     }
 }

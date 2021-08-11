@@ -31,6 +31,8 @@ public class DoctorContentScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityDoctorContentScreenBinding.inflate(getLayoutInflater());
         setContentView(R.layout.activity_doctor_content_screen);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         doctorName = (TextView)findViewById(R.id.doctorNameTextview);
         doctorType = (TextView)findViewById(R.id.doctorTypeTextView);

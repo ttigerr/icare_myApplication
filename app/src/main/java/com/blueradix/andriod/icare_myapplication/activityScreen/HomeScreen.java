@@ -15,7 +15,7 @@ import java.util.List;
 
 public class HomeScreen extends AppCompatActivity
 {
-    int index = 0;
+    int index = 1;
     List<SymptomItems> symptomList;
     SymptomItems symptom;
 

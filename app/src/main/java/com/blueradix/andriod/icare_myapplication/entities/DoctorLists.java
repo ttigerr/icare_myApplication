@@ -1,7 +1,12 @@
 package com.blueradix.andriod.icare_myapplication.entities;
 
-public class DoctorLists
+import androidx.annotation.Nullable;
+
+import java.io.Serializable;
+
+public class DoctorLists implements Serializable
 {
+    public static final String DOCTOR_KEY = "doctor_key";
     public long doctorId;
     public String doctorName;
     public String doctorType;
@@ -94,4 +99,13 @@ public class DoctorLists
                 ", doctorImageResource=" + doctorImageResource +
                 '}';
     }
+
+    /*@Override
+    public boolean equals(Object object)
+    {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        DoctorLists doctor = (DoctorLists) object;
+        return doctorId.equals;
+    }*/
 }

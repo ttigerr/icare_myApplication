@@ -1,5 +1,6 @@
 package com.blueradix.andriod.icare_myapplication.activityScreen;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,12 +13,13 @@ import android.widget.ImageButton;
 import com.blueradix.andriod.icare_myapplication.R;
 import com.blueradix.andriod.icare_myapplication.entities.DoctorLists;
 import com.blueradix.andriod.icare_myapplication.recyclerView.DoctorViewAdapter;
+import com.blueradix.andriod.icare_myapplication.recyclerView.OnDoctorListener;
 import com.blueradix.andriod.icare_myapplication.service.DataService;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DoctorScreen extends AppCompatActivity
+public class DoctorScreen extends AppCompatActivity implements OnDoctorListener
 {
     private DataService doctorDataService;
     private RecyclerView recyclerView;
@@ -46,7 +48,7 @@ public class DoctorScreen extends AppCompatActivity
         doctorList = doctorDataService.getDoctor();
 
         recyclerView = findViewById(R.id.itemListsRecyclerView);
-        dAdapter = new DoctorViewAdapter(this,doctorList);
+        dAdapter = new DoctorViewAdapter(this,doctorList, this);
         recyclerView.setLayoutManager(new GridLayoutManager(this,2));
         recyclerView.setAdapter(dAdapter);
 
@@ -63,4 +65,16 @@ public class DoctorScreen extends AppCompatActivity
         });
     }
 
+    @Override
+    public void onDoctorListener(DoctorLists doctor)
+    {
+        showDoctorDetail(doctor);
+    }
+
+    private void showDoctorDetail( DoctorLists doctor)
+    {
+        Intent goToDoctorDetailScreen = new Intent(this,DoctorContentScreen.class);
+        goToDoctorDetailScreen.putExtra(DoctorLists.DOCTOR_KEY, doctor);
+        startActivity(goToDoctorDetailScreen);
+    }
 }

@@ -19,13 +19,17 @@ public class DoctorViewHolder extends RecyclerView.ViewHolder
     public final TextView doctorType;
     public final MaterialCardView cardView;
 
-    public DoctorViewHolder(@NonNull View itemView)
+    private OnDoctorListener onDoctorListener;
+
+    public DoctorViewHolder(@NonNull View itemView, OnDoctorListener onDoctorListener)
     {
         super(itemView);
         doctorImageView = itemView.findViewById(R.id.cardItemImageView);
         doctorTextview = itemView.findViewById(R.id.cardItemTextView);
         doctorType = itemView.findViewById(R.id.optionalTextView);
         cardView = itemView.findViewById(R.id.applicationCardView);
+        this.onDoctorListener = onDoctorListener;
+
     }
 
     public void updateDoctorData(DoctorLists doctor)
@@ -35,5 +39,12 @@ public class DoctorViewHolder extends RecyclerView.ViewHolder
         doctorImageView.setImageResource(resID);
         this.doctorTextview.setText(doctor.getDoctorName());
         this.doctorType.setText(doctor.getDoctorType());
+    }
+
+    public void bind(final DoctorLists doctor, OnDoctorListener onDoctorListener)
+    {
+        this.itemView.setOnClickListener((v) ->{
+            onDoctorListener.onDoctorListener(doctor);
+        });
     }
 }

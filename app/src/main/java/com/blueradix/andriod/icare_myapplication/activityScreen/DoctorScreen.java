@@ -4,7 +4,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +18,9 @@ import com.blueradix.andriod.icare_myapplication.service.DataService;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.blueradix.andriod.icare_myapplication.entities.Constants.DOCTOR_CONTENT_ACTIVITY_CODE;
+
+
 public class DoctorScreen extends AppCompatActivity implements OnDoctorListener
 {
     private DataService doctorDataService;
@@ -26,6 +28,7 @@ public class DoctorScreen extends AppCompatActivity implements OnDoctorListener
     private RecyclerView.Adapter dAdapter;
     private RecyclerView.LayoutManager dLayoutManager;
     List<DoctorLists> doctorList;
+    DoctorLists doctor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -48,7 +51,7 @@ public class DoctorScreen extends AppCompatActivity implements OnDoctorListener
         doctorList = doctorDataService.getDoctor();
 
         recyclerView = findViewById(R.id.itemListsRecyclerView);
-        dAdapter = new DoctorViewAdapter(this,doctorList, this);
+        dAdapter = new DoctorViewAdapter(this, doctorList, this);
         recyclerView.setLayoutManager(new GridLayoutManager(this,2));
         recyclerView.setAdapter(dAdapter);
 
@@ -61,20 +64,30 @@ public class DoctorScreen extends AppCompatActivity implements OnDoctorListener
             {
                 Intent returnToHomeScreenIntent = new Intent(DoctorScreen.this, HomeScreen.class);
                 startActivity(returnToHomeScreenIntent);
+
             }
         });
     }
 
     @Override
-    public void onDoctorListener(DoctorLists doctor)
+    public void onDoctorClick(DoctorLists doctor)
     {
-        showDoctorDetail(doctor);
+        /*this.doctor = doctor;
+        showDoctorDetail(doctor);*/
+        Intent goToDoctorDetailScreen = new Intent(DoctorScreen.this, DoctorContentScreen.class);
+        goToDoctorDetailScreen.putExtra(DoctorLists.DOCTOR_KEY, doctor);
+        startActivityForResult(goToDoctorDetailScreen, DOCTOR_CONTENT_ACTIVITY_CODE);
+
+
     }
 
-    private void showDoctorDetail( DoctorLists doctor)
+
+    /*private void showDoctorDetail( DoctorLists doctor)
     {
-        Intent goToDoctorDetailScreen = new Intent(this,DoctorContentScreen.class);
+        Intent goToDoctorDetailScreen = new Intent(this, DoctorContentScreen.class);
         goToDoctorDetailScreen.putExtra(DoctorLists.DOCTOR_KEY, doctor);
-        startActivity(goToDoctorDetailScreen);
-    }
+        startActivityForResult(goToDoctorDetailScreen, DOCTOR_CONTENT_ACTIVITY_CODE);
+
+    }*/
+
 }

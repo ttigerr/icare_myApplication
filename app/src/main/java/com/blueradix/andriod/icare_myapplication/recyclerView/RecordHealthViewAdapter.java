@@ -21,6 +21,8 @@ public class RecordHealthViewAdapter extends RecyclerView.Adapter<RecordHealthVi
 
     private List<UserHealthRecord> recordList;
     private Context context;
+    public List<UserHealthRecord> getRecord(){ return recordList; }
+
 
     @NonNull
     @Override
@@ -40,9 +42,7 @@ public class RecordHealthViewAdapter extends RecyclerView.Adapter<RecordHealthVi
     public void onBindViewHolder(@NonNull RecordHealthViewHolder holder, int position)
     {
         UserHealthRecord userRecordList = recordList.get(position);
-        holder.recordTitle.setText(userRecordList.getRecordTitle());
-        holder.recordDate.setText(userRecordList.getRecordDate());
-        holder.recordHealthImage.setImageResource(userRecordList.getRecordImageResource());
+        holder.updateRecordData(userRecordList);
 
         // Go inside the symptom content
         holder.cardView.setOnClickListener(new View.OnClickListener()
@@ -51,7 +51,9 @@ public class RecordHealthViewAdapter extends RecyclerView.Adapter<RecordHealthVi
             @Override
             public void onClick(View v)
             {
+
                 Intent goToRecordHealthContentIntent = new Intent(context, RecordContentScreen.class);
+
                 goToRecordHealthContentIntent.putExtra("Record Name",recordList.get(position).getRecordTitle());
                 goToRecordHealthContentIntent.putExtra("Record Description",recordList.get(position).getRecordDescription());
                 goToRecordHealthContentIntent.putExtra("Record SideEffect",recordList.get(position).getRecordSideEffect());

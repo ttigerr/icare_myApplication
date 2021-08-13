@@ -2,17 +2,19 @@ package com.blueradix.andriod.icare_myapplication.entities;
 
 public class UserHealthRecord
 {
-    private long id;
-    private String recordTitle;
-    private String recordDate;
-    private String recordDescription;
-    private String recordSideEffect;
-    private int recordImageResource;
+    public static final String RECORD_KEY = "record_key";
+    public long id;
+    public String recordTitle;
+    public String recordDate;
+    public String recordDescription;
+    public String recordSideEffect;
+    public String recordImageResource;
+    public Long userId;
 
     // constructor
 
 
-    public UserHealthRecord(long id, String recordTitle, String recordDate, String recordDescription, String recordSideEffect, int recordImageResource)
+    public UserHealthRecord(long id, String recordTitle, String recordDate, String recordDescription, String recordSideEffect, String recordImageResource, Long userId)
     {
         this.id = id;
         this.recordTitle = recordTitle;
@@ -20,6 +22,7 @@ public class UserHealthRecord
         this.recordDescription = recordDescription;
         this.recordSideEffect = recordSideEffect;
         this.recordImageResource = recordImageResource;
+        this.userId = userId;
     }
 
     // Default constructor
@@ -68,16 +71,25 @@ public class UserHealthRecord
         this.recordSideEffect = recordSideEffect;
     }
 
-    public int getRecordImageResource() {
+    public String getRecordImageResource() {
         return recordImageResource;
     }
 
-    public void setRecordImageResource(int recordImageResource) {
+    public void setRecordImageResource(String recordImageResource) {
         this.recordImageResource = recordImageResource;
     }
 
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "UserHealthRecord{" +
                 "id=" + id +
                 ", recordTitle='" + recordTitle + '\'' +

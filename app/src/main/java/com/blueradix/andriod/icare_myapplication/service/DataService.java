@@ -5,6 +5,7 @@ import android.content.Context;
 import com.blueradix.andriod.icare_myapplication.database.ApplicationDatabaseHelper;
 import com.blueradix.andriod.icare_myapplication.entities.DoctorLists;
 import com.blueradix.andriod.icare_myapplication.entities.SymptomItems;
+import com.blueradix.andriod.icare_myapplication.entities.UserHealthRecord;
 import com.blueradix.andriod.icare_myapplication.entities.Users;
 
 import java.util.List;
@@ -47,5 +48,29 @@ public class DataService
         List<DoctorLists> doctors = sqlite.getDoctor();
         return doctors;
     }
+
+    public DoctorLists getDoctors(Long id)
+    {
+        DoctorLists doctor = sqlite.getDoctors(id);
+        return doctor;
+    }
+
+    public List<UserHealthRecord> getRecord()
+    {
+        List<UserHealthRecord> records = sqlite.getRecord();
+        return records;
+    }
+
+    public List<UserHealthRecord> getRecordByUser(Long userId)
+    {
+        List<UserHealthRecord> records = sqlite.getRecordByUserId(userId);
+        return records;
+    }
+
+    public UserHealthRecord getRecords(Long id)
+    {
+        return sqlite.getRecords(id);
+    }
+
 }
 

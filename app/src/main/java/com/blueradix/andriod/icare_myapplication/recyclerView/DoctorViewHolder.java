@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.blueradix.andriod.icare_myapplication.R;
 import com.blueradix.andriod.icare_myapplication.entities.DoctorLists;
-import com.blueradix.andriod.icare_myapplication.entities.SymptomItems;
 import com.google.android.material.card.MaterialCardView;
 
 public class DoctorViewHolder extends RecyclerView.ViewHolder
@@ -43,8 +42,15 @@ public class DoctorViewHolder extends RecyclerView.ViewHolder
 
     public void bind(final DoctorLists doctor, OnDoctorListener onDoctorListener)
     {
-        this.itemView.setOnClickListener((v) ->{
-            onDoctorListener.onDoctorListener(doctor);
+        this.itemView.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                onDoctorListener.onDoctorClick(doctor);
+            }
         });
+
+
     }
 }

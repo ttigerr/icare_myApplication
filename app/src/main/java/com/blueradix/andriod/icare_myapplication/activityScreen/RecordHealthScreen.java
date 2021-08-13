@@ -12,6 +12,7 @@ import android.widget.ImageButton;
 import com.blueradix.andriod.icare_myapplication.R;
 import com.blueradix.andriod.icare_myapplication.entities.UserHealthRecord;
 import com.blueradix.andriod.icare_myapplication.recyclerView.RecordHealthViewAdapter;
+import com.blueradix.andriod.icare_myapplication.service.DataService;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -20,21 +21,32 @@ import java.util.List;
 public class RecordHealthScreen extends AppCompatActivity
 {
 
+    private DataService recordDataService;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter recordAdapter;
     private RecyclerView.LayoutManager recordLayoutManager;
     List<UserHealthRecord> userRecordList;
+    private View rootView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_record_health_screen);
 
-        userRecordList = new ArrayList<>();
+        Long userId = getIntent().getLongExtra("ID", 0);
+
+        /*serRecordList = new ArrayList<>();
         userRecordList.add(new UserHealthRecord(1, "Air Pollution", "27/09/2017", "This PM2.5", "Making acne",R.mipmap.ic_launcher3));
         userRecordList.add(new UserHealthRecord(1, "Stomachache", "27/09/2017", "This PM2.5", "Making acne",R.mipmap.ic_launcher1));
         userRecordList.add(new UserHealthRecord(1, "Sinus", "27/09/2017", "This PM2.5", "Making acne",R.mipmap.ic_launcher7));
         userRecordList.add(new UserHealthRecord(1, "Heart Attack", "27/09/2017", "This PM2.5", "Making acne",R.mipmap.ic_launcher9));
+*/
+        recordDataService = new DataService();
+        recordDataService.init(this);
+        rootView = findViewById(android.R.id.content).getRootView();
+        userRecordList = recordDataService.getRecordByUser(userId);
+        //userRecordList = recordDataService.getRecord();
 
         recyclerView = findViewById(R.id.itemListsRecyclerView);
         recyclerView.setHasFixedSize(true);

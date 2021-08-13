@@ -15,7 +15,6 @@ import java.util.List;
 
 public class HomeScreen extends AppCompatActivity
 {
-    int index = 1;
     List<SymptomItems> symptomList;
     SymptomItems symptom;
 
@@ -61,27 +60,7 @@ public class HomeScreen extends AppCompatActivity
             }
         });
 
-        // Set the action in buttons to display
-        ImageButton headacheButton = findViewById(R.id.headacheScreenButton);
-        headacheButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                index = 1;
-                if(symptom.getSymptomId() == index)
-                {
-                    Intent goToSymptomDetailIntent = new Intent(HomeScreen.this, SymptomContentScreen.class);
-                    goToSymptomDetailIntent.putExtra("Symptom Name",symptomList.get(0).getSymptomName());
-                    goToSymptomDetailIntent.putExtra("Symptom Description",symptomList.get(0).getSymptomDescription());
-                    goToSymptomDetailIntent.putExtra("Symptom Risk",symptomList.get(0).getSymptomRisk());
-                    goToSymptomDetailIntent.putExtra("Symptom Cause",symptomList.get(0).getSymptomCauses());
-                    goToSymptomDetailIntent.putExtra("Symptom Solution",symptomList.get(0).getSymptomSolution());
 
-                    startActivity(goToSymptomDetailIntent);
-                }
-            }
-        });
 
     }
 }

@@ -4,5 +4,5 @@ import com.blueradix.andriod.icare_myapplication.entities.DoctorLists;
 
 public interface OnDoctorListener
 {
-    void onDoctorListener(DoctorLists doctor);
+    void onDoctorClick(DoctorLists doctor);
 }

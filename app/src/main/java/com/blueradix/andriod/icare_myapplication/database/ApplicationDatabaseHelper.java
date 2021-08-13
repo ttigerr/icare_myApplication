@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 
 import com.blueradix.andriod.icare_myapplication.entities.DoctorLists;
 import com.blueradix.andriod.icare_myapplication.entities.SymptomItems;
+import com.blueradix.andriod.icare_myapplication.entities.UserHealthRecord;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +46,7 @@ public class ApplicationDatabaseHelper extends SQLiteOpenHelper
         db.execSQL(CREATE_TABLE_USER);
         db.execSQL(CREATE_TABLE_SYMPTOM);
         db.execSQL(CREATE_TABLE_DOCTOR);
+        db.execSQL(CREATE_TABLE_RECORD);
     }
 
     @Override
@@ -53,6 +55,7 @@ public class ApplicationDatabaseHelper extends SQLiteOpenHelper
         db.execSQL(DROP_TABLE_USER);
         db.execSQL(DROP_TABLE_SYMPTOM);
         db.execSQL(DROP_TABLE_DOCTOR);
+        db.execSQL(DROP_TABLE_RECORD);
         onCreate(db);
     }
 
@@ -205,6 +208,7 @@ public class ApplicationDatabaseHelper extends SQLiteOpenHelper
 
     private static final String DROP_TABLE_DOCTOR = " DROP TABLE IF EXISTS " + TABLE_DOCTOR;
     private static final String GET_ALL_DOCTOR = "SELECT * FROM " + TABLE_DOCTOR;
+    private static final String GET_DOCTOR_BY_ID = "SELECT * FROM " + TABLE_DOCTOR + "WHERE" + COL_DOCTOR_ID + " = ? ";;
 
     // Only use the cursor to paste the data in it
     public List<DoctorLists> getDoctor()
@@ -235,6 +239,135 @@ public class ApplicationDatabaseHelper extends SQLiteOpenHelper
     {
         SQLiteDatabase db = this.getReadableDatabase();
         return db.rawQuery(GET_ALL_DOCTOR, null);
+    }
+
+    public DoctorLists getDoctors(Long id)
+    {
+        SQLiteDatabase database = this.getReadableDatabase();
+        DoctorLists doctor = null;
+        Cursor cursor = database.rawQuery(GET_DOCTOR_BY_ID, new String[]{id.toString()});
+        if(cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                String name = cursor.getString(1);
+                String type = cursor.getString(2);
+                String description = cursor.getString(3);
+                String achievement = cursor.getString(4);
+                String contact = cursor.getString(5);
+                String image = cursor.getString(6);
+
+                doctor = new DoctorLists(id, name, type, description, achievement, contact, image);
+            }
+        }
+        cursor.close();
+        return doctor;
+    }
+
+    // TABLE FOR DOCTOR
+    // Insert a new table on schema
+    private static final String TABLE_RECORD = "RECORDS";
+    private static final String COL_RECORD_ID = "ID";
+    private static final String COL_RECORD_TITLE = "TITLE";
+    private static final String COL_RECORD_DATE = "DATE";
+    private static final String COL_RECORD_DESCRIPTION = "DESCRIPTION";
+    private static final String COL_RECORD_SIDEEFFECT = "EFFECT";
+    private static final String COL_RECORD_IMAGE = "IMAGE";
+    private static final String COL_USER_ID = "USERID";
+
+    private static final String CREATE_TABLE_RECORD = "CREATE TABLE " + TABLE_RECORD + "(" + COL_RECORD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            COL_RECORD_TITLE + " TEXT, " +
+            COL_RECORD_DATE + " TEXT, " +
+            COL_RECORD_DESCRIPTION + " TEXT, " +
+            COL_RECORD_SIDEEFFECT + " TEXT, " +
+            COL_RECORD_IMAGE + " TEXT, " +
+            COL_USER_ID + " INTEGER )";
+            /*COL_ID + " INTEGER, " +
+            "FOREIGN KEY(" + COL_ID + ") REFERENCES " + TABLE_USERS + "(" + COL_ID + ")" + ")";*/
+
+    private static final String DROP_TABLE_RECORD = " DROP TABLE IF EXISTS " + TABLE_RECORD;
+    private static final String GET_ALL_RECORD = "SELECT * FROM " + TABLE_RECORD;
+    private static final String GET_RECORD_BY_USERID = "SELECT * FROM " + TABLE_RECORD + "WHERE" + COL_USER_ID + "= ? ";
+
+    public List<UserHealthRecord> getRecord()
+    {
+        List<UserHealthRecord> record = new ArrayList<>();
+        Cursor cursor = getAllDoctor();
+
+        if(cursor.getCount() > 0) {
+            UserHealthRecord records;
+            while (cursor.moveToNext()) {
+                Long id = cursor.getLong(0);
+                String title = cursor.getString(1);
+                String date = cursor.getString(2);
+                String description = cursor.getString(3);
+                String sideEffect = cursor.getString(4);
+                String image = cursor.getString(5);
+                Long userId = cursor.getLong(6);
+
+                records = new UserHealthRecord(id, title, date, description, sideEffect, image, userId);
+                record.add(records);
+            }
+        }
+        cursor.close();
+        return record;
+    }
+
+    public List<UserHealthRecord> getRecordByUserId(Long userId)
+    {
+        List<UserHealthRecord> record = new ArrayList<>();
+        Cursor cursor = getAllRecordByUserId(userId);
+
+        if(cursor.getCount() > 0) {
+            UserHealthRecord records;
+            while (cursor.moveToNext()) {
+                Long id = cursor.getLong(0);
+                String title = cursor.getString(1);
+                String date = cursor.getString(2);
+                String description = cursor.getString(3);
+                String sideEffect = cursor.getString(4);
+                String image = cursor.getString(5);
+                //Long userId = cursor.getLong(6);
+
+                records = new UserHealthRecord(id, title, date, description, sideEffect, image, userId);
+                record.add(records);
+            }
+        }
+        cursor.close();
+        return record;
+    }
+
+    public UserHealthRecord getRecords( Long id )
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+        UserHealthRecord records = null;
+        Cursor cursor = db.rawQuery(GET_RECORD_BY_USERID, new String[]{id.toString()});
+
+
+        if(cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                String title = cursor.getString(1);
+                String date = cursor.getString(2);
+                String description = cursor.getString(3);
+                String sideEffect = cursor.getString(4);
+                String image = cursor.getString(5);
+                Long userId = cursor.getLong(6);
+
+                records = new UserHealthRecord(id, title, date, description, sideEffect, image, userId);
+            }
+        }
+        cursor.close();
+        return records;
+    }
+
+    private Cursor getAllRecord()
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery(GET_ALL_RECORD, null);
+    }
+
+    private Cursor getAllRecordByUserId( Long userId )
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery(GET_RECORD_BY_USERID, new String[]{userId.toString()});
     }
 
 
